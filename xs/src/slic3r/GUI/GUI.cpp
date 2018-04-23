@@ -1,6 +1,7 @@
 #include "GUI.hpp"
 #include "WipeTowerDialog.hpp"
 
+#include <iostream>   // XXX
 #include <assert.h>
 #include <cmath>
 
@@ -49,6 +50,8 @@
 #include "Utils.hpp"
 #include "Preferences.hpp"
 #include "PresetBundle.hpp"
+
+#include "avrdude/avrdude-slic3r.hpp"    // XXX: TMP!
 
 namespace Slic3r { namespace GUI {
 
@@ -224,6 +227,8 @@ void set_app_config(AppConfig *app_config)
 void set_preset_bundle(PresetBundle *preset_bundle)
 {
 	g_PresetBundle = preset_bundle;
+
+	AvrDude::main({{ "-h" }}, "/tmp/", std::cerr);   // XXX: tmp
 }
 
 std::vector<Tab *>& get_tabs_list()
