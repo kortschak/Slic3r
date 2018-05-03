@@ -95,3 +95,18 @@ void add_export_option(SV *ui, std::string format)
 int get_export_option(SV *ui)
     %code%{ RETVAL = Slic3r::GUI::get_export_option((wxFileDialog*)wxPli_sv_2_object(aTHX_ ui, "Wx::FileDialog")); %};
     
+void register_test_perl_callback(SV *callback)
+    %code%{ Slic3r::GUI::s_test_perl_callback.register_callback((void*)callback); %};
+
+void deregister_test_perl_callback()
+    %code%{ Slic3r::GUI::s_test_perl_callback.deregister_callback(); %};
+
+void call_test_perl_callback()
+    %code%{ Slic3r::GUI::s_test_perl_callback.call(); %};
+
+void call_test_perl_callback_i(int i)
+    %code%{ Slic3r::GUI::s_test_perl_callback.call(i); %};
+
+void call_test_perl_callback_ij(int i, int j)
+    %code%{ Slic3r::GUI::s_test_perl_callback.call(i, j); %};
+

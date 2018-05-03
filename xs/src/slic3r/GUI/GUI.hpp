@@ -29,6 +29,7 @@ class AppConfig;
 class PresetUpdater;
 class DynamicPrintConfig;
 class TabIface;
+class PerlCallback;
 
 // !!! If you needed to translate some wxString,
 // !!! please use _(L(string))
@@ -160,6 +161,8 @@ int get_export_option(wxFileDialog* dlg);
 
 // Display an About dialog
 void about();
+
+extern PerlCallback s_test_perl_callback;
 
 } // namespace GUI
 } // namespace Slic3r

@@ -85,6 +85,12 @@ sub OnInit {
     Slic3r::set_data_dir($datadir || Wx::StandardPaths::Get->GetUserDataDir);
     Slic3r::GUI::set_wxapp($self);
 
+    Slic3r::GUI::register_test_perl_callback(sub { my ($i, $j) = @_; $i //= 'undef'; $j //= 'undef'; print "Callback called by C++, i: $i, j: $j\n"; });
+    Slic3r::GUI::call_test_perl_callback();
+    Slic3r::GUI::call_test_perl_callback_i(1);
+    Slic3r::GUI::call_test_perl_callback_ij(1, 2);
+    Slic3r::GUI::deregister_test_perl_callback();
+
     $self->{app_config} = Slic3r::GUI::AppConfig->new;
     Slic3r::GUI::set_app_config($self->{app_config});
     $self->{preset_bundle} = Slic3r::GUI::PresetBundle->new;

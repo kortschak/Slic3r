@@ -992,4 +992,6 @@ void about()
     dlg.Destroy();
 }
 
+PerlCallback s_test_perl_callback;
+
 } }
